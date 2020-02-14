@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const logger = require('morgan') // It is a http request logger which print in the terminal all the request that the server will receive
 const v1 = require('./v1')
+const bodyParser = require('body-parser')
 
 /**
 * Ensure JSON acceptance
@@ -20,6 +21,8 @@ app.use((req, res, next) => {
  *  Middlewares
  */
 app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // it will inject data from the request into req.body
 
 /**
  * Routes
