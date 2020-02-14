@@ -30,6 +30,7 @@ function normalizePort (val) {
 
   // named pipe
   if (isNaN(port)) return val
+
   // port number
   if (port >= 0) return port
 
@@ -64,7 +65,7 @@ function onError (error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
- function onListening () {
+function onListening () {
   const addr = server.address()
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
